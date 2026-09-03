@@ -1,6 +1,5 @@
 using Core.DTOs.OrderAddressSpace;
 using Core.DTOs.OrderItems;
-using Core.Entitys;
 
 namespace Core.DTOs.Order;
 
