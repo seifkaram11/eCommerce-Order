@@ -55,6 +55,10 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[10.0.10, )"
+            },
+            "Microsoft.OpenApi": {
+              "target": "Package",
+              "version": "[2.12.2, )"
             }
           },
           "imports": [
@@ -543,6 +547,10 @@
               "target": "Package",
               "version": "[11.3.1, )"
             },
+            "MassTransit.MongoDb": {
+              "target": "Package",
+              "version": "[9.2.3, )"
+            },
             "Microsoft.Extensions.DependencyInjection.Abstractions": {
               "target": "Package",
               "version": "[10.0.11, )"
@@ -887,25 +895,13 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "dependencies": {
-            "MassTransit.EntityFrameworkCore": {
+            "MassTransit.MongoDb": {
               "target": "Package",
               "version": "[9.2.3, )"
             },
             "MassTransit.RabbitMQ": {
               "target": "Package",
               "version": "[9.2.3, )"
-            },
-            "Microsoft.EntityFrameworkCore.Design": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[10.*, )"
-            },
-            "Microsoft.EntityFrameworkCore.Tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[10.*, )"
             },
             "Microsoft.Extensions.Configuration.Abstractions": {
               "target": "Package",
@@ -918,6 +914,10 @@
             "MongoDB.Driver": {
               "target": "Package",
               "version": "[3.12.0, )"
+            },
+            "StackExchange.Redis": {
+              "target": "Package",
+              "version": "[3.4.5, )"
             }
           },
           "imports": [

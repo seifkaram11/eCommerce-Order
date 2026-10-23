@@ -5,7 +5,7 @@ namespace Core.DTOs.Order;
 
 public class OrderUpdateRequest
 {
-    public OrderStatus? Status { get; set; }
+    public OrderStatus Status { get; set; }
 
     public OrderAddressRequest? ShippingAddress { get; set; }
 

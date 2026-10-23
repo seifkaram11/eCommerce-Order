@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "vFTmkJ9/kZg=",
+  "dgSpecHash": "yEqDetnaOX8=",
   "success": true,
   "projectFilePath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Orders/API/API.csproj",
   "expectedPackageFiles": [
@@ -11,37 +11,23 @@
     "/home/seifel-dinkaram/.nuget/packages/fluentvalidation.dependencyinjectionextensions/11.11.0/fluentvalidation.dependencyinjectionextensions.11.11.0.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/masstransit/9.2.3/masstransit.9.2.3.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/masstransit.abstractions/9.2.3/masstransit.abstractions.9.2.3.nupkg.sha512",
-    "/home/seifel-dinkaram/.nuget/packages/masstransit.entityframeworkcore/9.2.3/masstransit.entityframeworkcore.9.2.3.nupkg.sha512",
+    "/home/seifel-dinkaram/.nuget/packages/masstransit.mongodb/9.2.3/masstransit.mongodb.9.2.3.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/masstransit.rabbitmq/9.2.3/masstransit.rabbitmq.9.2.3.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/microsoft.aspnetcore.openapi/10.0.10/microsoft.aspnetcore.openapi.10.0.10.nupkg.sha512",
-    "/home/seifel-dinkaram/.nuget/packages/microsoft.entityframeworkcore/10.0.0/microsoft.entityframeworkcore.10.0.0.nupkg.sha512",
-    "/home/seifel-dinkaram/.nuget/packages/microsoft.entityframeworkcore.abstractions/10.0.0/microsoft.entityframeworkcore.abstractions.10.0.0.nupkg.sha512",
-    "/home/seifel-dinkaram/.nuget/packages/microsoft.entityframeworkcore.analyzers/10.0.0/microsoft.entityframeworkcore.analyzers.10.0.0.nupkg.sha512",
-    "/home/seifel-dinkaram/.nuget/packages/microsoft.entityframeworkcore.relational/10.0.0/microsoft.entityframeworkcore.relational.10.0.0.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/microsoft.identitymodel.abstractions/8.14.0/microsoft.identitymodel.abstractions.8.14.0.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/microsoft.identitymodel.jsonwebtokens/8.14.0/microsoft.identitymodel.jsonwebtokens.8.14.0.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/microsoft.identitymodel.logging/8.14.0/microsoft.identitymodel.logging.8.14.0.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/microsoft.identitymodel.tokens/8.14.0/microsoft.identitymodel.tokens.8.14.0.nupkg.sha512",
-    "/home/seifel-dinkaram/.nuget/packages/microsoft.openapi/2.0.0/microsoft.openapi.2.0.0.nupkg.sha512",
+    "/home/seifel-dinkaram/.nuget/packages/microsoft.openapi/2.12.2/microsoft.openapi.2.12.2.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/mongodb.bson/3.12.0/mongodb.bson.3.12.0.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/mongodb.driver/3.12.0/mongodb.driver.3.12.0.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/rabbitmq.client/7.2.2/rabbitmq.client.7.2.2.nupkg.sha512",
+    "/home/seifel-dinkaram/.nuget/packages/respite/3.4.5/respite.3.4.5.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/sharpcompress/0.48.1/sharpcompress.0.48.1.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/snappier/1.3.1/snappier.1.3.1.nupkg.sha512",
+    "/home/seifel-dinkaram/.nuget/packages/stackexchange.redis/3.4.5/stackexchange.redis.3.4.5.nupkg.sha512",
+    "/home/seifel-dinkaram/.nuget/packages/system.io.hashing/10.0.12/system.io.hashing.10.0.12.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/zstdsharp.port/0.7.3/zstdsharp.port.0.7.3.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1903",
-      "level": "Warning",
-      "message": "Package 'Microsoft.OpenApi' 2.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-v5pm-xwqc-g5wc",
-      "projectPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Orders/API/API.csproj",
-      "warningLevel": 1,
-      "filePath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Orders/API/API.csproj",
-      "libraryId": "Microsoft.OpenApi",
-      "targetGraphs": [
-        "net10.0"
-      ]
-    }
-  ]
+  "logs": []
 }

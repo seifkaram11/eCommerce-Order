@@ -3,151 +3,195 @@ using Core.Entitys;
 using Core.Enums;
 using Core.RepositoryContrast;
 using Data;
+using Infrastructure.Contracts;
+using MassTransit;
+using MassTransit.MongoDbIntegration;
 using MongoDB.Driver;
 
 namespace Infrastructure.Repository;
 
 public class OrdersRepository : IOrdersRepository
 {
-    private readonly MongoDbContext _mongoDbContext;
+    private readonly IMongoCollection<Order> _orders;
+    private readonly MongoDbContext _mt;
+    private readonly IPublishEndpoint _publisher;
 
-    public OrdersRepository(MongoDbContext mongoDbContext)
+    public OrdersRepository(OrderDbContext db, MongoDbContext mt, IPublishEndpoint publisher)
     {
-        _mongoDbContext = mongoDbContext;
+        _orders = db.Orders;
+        _mt = mt;
+        _publisher = publisher;
+    }
+
+
+    private async Task<T> InTransactionAsync<T>(Func<IClientSessionHandle, Task<T>> work,
+    CancellationToken ct)
+    {
+        await _mt.BeginTransaction(ct);
+        try
+        {
+            var result = await work(_mt.Session!);
+            await _mt.CommitTransaction(ct);
+            return result;
+        }
+        catch
+        {
+            await _mt.Session!.AbortTransactionAsync(CancellationToken.None);
+            throw;
+        }
     }
 
 
     private async Task<bool> ApplyUpdateAsync(Guid orderId, UpdateDefinition<Order> update)
     {
-        update = update.Set(_ => _.UpdatedAt, DateTime.UtcNow);
+        update = update
+            .Set(o => o.UpdatedAt, DateTime.UtcNow)
+            .Inc(o => o.OrderVer, 1);
 
-        var result = await _mongoDbContext.Orders
-            .UpdateOneAsync(_ => _.OrderId == orderId, update);
-
-        return result.IsAcknowledged && result.MatchedCount > 0 && await makeNewVersionOfOrder(orderId);
+        var result = await _orders.UpdateOneAsync(o => o.OrderId == orderId, update);
+        return result.IsAcknowledged && result.MatchedCount > 0;
     }
 
-    public async Task<bool> CreateOrderAsync(Order order)
-    {
-        await _mongoDbContext.Orders.InsertOneAsync(order);
-        return true;
-    }
+    public Task<Order?> CreateOrderAsync(Order order, CancellationToken ct) =>
+        InTransactionAsync<Order?>(async ses =>
+        {
+            await _orders.InsertOneAsync(ses, order, cancellationToken: ct);
 
-    public async Task<bool> DeleteOrderAsync(Guid orderId)
-    {
-        var result = await _mongoDbContext.Orders.DeleteOneAsync(_ => _.OrderId == orderId);
-        return result.IsAcknowledged && result.DeletedCount > 0;
-    }
+            foreach (var item in order.Items)
+                await _publisher.Publish(
+                    new OrderCretated(order.OrderId, item.ProductId, item.ProductVariantId, item.Quantity), ct);
 
-    public async Task<bool> DeleteOrdersBySpecificConditionAsync(Expression<Func<Order, bool>> predicate)
-    {
-        var result = await _mongoDbContext.Orders.DeleteManyAsync(predicate);
-        return result.IsAcknowledged && result.DeletedCount > 0;
-    }
+            return order;
+        }, ct);
 
-    public async Task<Order?> GetOrderByIdAsync(Guid orderId)
-    {
-        return await _mongoDbContext.Orders
-            .Find(_ => _.OrderId == orderId)
-            .FirstOrDefaultAsync();
-    }
+    public Task<bool> DeleteOrderAsync(Guid orderId, CancellationToken ct) =>
+        InTransactionAsync(async ses =>
+        {
+            var order = await _orders.FindOneAndDeleteAsync(ses, o => o.OrderId == orderId, cancellationToken: ct);
+            if (order is null)
+                return false;
 
-    public async Task<IEnumerable<Order>> GetOrdersByConditionAsync(Expression<Func<Order, bool>> predicate)
-    {
-        return await _mongoDbContext.Orders.Find(predicate).ToListAsync();
-    }
+            foreach (var item in order.Items)
+                await _publisher.Publish(
+                    new OrderCanceled(item.ProductId, item.ProductVariantId, item.Quantity), ct);
 
-    public async Task<bool> UpdateOrderStatusAsync(Guid orderId, OrderStatus newStatus)
+            return true;
+        }, ct);
+
+    public Task<bool> DeleteOrdersBySpecificConditionAsync(Expression<Func<Order, bool>> predicate, CancellationToken ct) =>
+        InTransactionAsync(async ses =>
+        {
+            var orders = await _orders.Find(ses, predicate).ToListAsync(ct);
+            if (orders.Count == 0)
+                return false;
+
+            foreach (var order in orders)
+                foreach (var item in order.Items)
+                    await _publisher.Publish(
+                        new OrderCanceled(item.ProductId, item.ProductVariantId, item.Quantity), ct);
+
+            var ids = orders.Select(o => o.OrderId).ToList();
+            var result = await _orders.DeleteManyAsync(
+                ses, Builders<Order>.Filter.In(o => o.OrderId, ids), cancellationToken: ct);
+
+            return result.IsAcknowledged && result.DeletedCount > 0;
+        }, ct);
+
+    public async Task<Order?> GetOrderByIdAsync(Guid orderId) =>
+        await _orders.Find(o => o.OrderId == orderId).FirstOrDefaultAsync();
+
+    public async Task<IEnumerable<Order>> GetOrdersByConditionAsync(Expression<Func<Order, bool>> predicate) =>
+        await _orders.Find(predicate).ToListAsync();
+
+    public Task<bool> UpdateOrderStatusAsync(Guid orderId, OrderStatus newStatus)
     {
         var update = Builders<Order>.Update
-            .Set(_ => _.Status, newStatus)
-            .Push(_ => _.StatusHistory, new OrderStatusHistory
+            .Set(o => o.Status, newStatus)
+            .Push(o => o.StatusHistory, new OrderStatusHistory
             {
                 Status = newStatus,
                 ChangedAt = DateTime.UtcNow
             });
 
-        return await ApplyUpdateAsync(orderId, update);
+        return ApplyUpdateAsync(orderId, update);
     }
 
-    public async Task<bool> AddNewItemToOrderAsync(Guid orderId, OrderItem item)
-    {
-        var itemTotal = item.UnitPrice * item.Quantity;
+    public Task<bool> AddNewItemToOrderAsync(Guid orderId, OrderItem item, CancellationToken ct) =>
+        InTransactionAsync(async ses =>
+        {
+            var itemTotal = item.UnitPrice * item.Quantity;
+            var now = DateTime.UtcNow;
 
-        var filter = Builders<Order>.Filter.And(
-            Builders<Order>.Filter.Eq(_ => _.OrderId, orderId),
-            Builders<Order>.Filter.ElemMatch(_ => _.Items,
-                _ => _.ProductId == item.ProductId
-                  && _.ProductVariantId == item.ProductVariantId));
+            var byId = Builders<Order>.Filter.Eq(o => o.OrderId, orderId);
+            var hasItem = Builders<Order>.Filter.ElemMatch(o => o.Items,
+                i => i.ProductId == item.ProductId && i.ProductVariantId == item.ProductVariantId);
 
-        var incUpdate = Builders<Order>.Update
-            .Inc(_ => _.Items[-1].Quantity, item.Quantity)
-            .Inc(_ => _.Items[-1].TotalPrice, itemTotal)
-            .Inc(_ => _.SubTotal, itemTotal)
-            .Inc(_ => _.Total, itemTotal)
-            .Set(_ => _.UpdatedAt, DateTime.UtcNow);
+            var incUpdate = Builders<Order>.Update
+                .Inc(o => o.Items[-1].Quantity, item.Quantity)
+                .Inc(o => o.Items[-1].TotalPrice, itemTotal)
+                .Inc(o => o.SubTotal, itemTotal)
+                .Set(o => o.UpdatedAt, now)
+                .Inc(o => o.OrderVer, 1);
 
-        var result = await _mongoDbContext.Orders.UpdateOneAsync(filter, incUpdate);
-        if (result.MatchedCount > 0)
+            var incResult = await _orders.UpdateOneAsync(ses, byId & hasItem, incUpdate, cancellationToken: ct);
+
+            if (!incResult.IsAcknowledged || incResult.MatchedCount == 0)
+            {
+                var pushUpdate = Builders<Order>.Update
+                    .Push(o => o.Items, item)
+                    .Inc(o => o.SubTotal, itemTotal)
+                    .Set(o => o.UpdatedAt, now)
+                    .Inc(o => o.OrderVer, 1);
+
+                var pushResult = await _orders.UpdateOneAsync(ses, byId & !hasItem, pushUpdate, cancellationToken: ct);
+
+                if (!pushResult.IsAcknowledged || pushResult.MatchedCount == 0)
+                    return false;
+            }
+
+            await _publisher.Publish(
+                new OrderCretated(orderId, item.ProductId, item.ProductVariantId, item.Quantity), ct);
+
             return true;
+        }, ct);
 
+    public Task<bool> ChangeShippingAddressAsync(Guid orderId, OrderAddress newAddress) =>
+        ApplyUpdateAsync(orderId, Builders<Order>.Update.Set(o => o.ShippingAddress, newAddress));
 
-        item.TotalPrice = itemTotal;
-
-        var pushUpdate = Builders<Order>.Update
-            .Push(_ => _.Items, item)
-            .Inc(_ => _.SubTotal, itemTotal)
-            .Inc(_ => _.Total, itemTotal);
-
-        return await ApplyUpdateAsync(orderId, pushUpdate);
-    }
-
-    public async Task<bool> ChangeShippingAddressAsync(Guid orderId, OrderAddress newAddress)
-    {
-        var update = Builders<Order>.Update.Set(_ => _.ShippingAddress, newAddress);
-        return await ApplyUpdateAsync(orderId, update) ;
-    }
-
-    public async Task<bool> ChangeBillingAddressAsync(Guid orderId, OrderAddress newAddress)
-    {
-        var update = Builders<Order>.Update.Set(_ => _.BillingAddress, newAddress);
-        return await ApplyUpdateAsync(orderId, update) ;
-    }
+    public Task<bool> ChangeBillingAddressAsync(Guid orderId, OrderAddress newAddress) =>
+        ApplyUpdateAsync(orderId, Builders<Order>.Update.Set(o => o.BillingAddress, newAddress));
 
     public async Task<bool> AddNewDiscountAsync(Guid orderId, decimal discount)
     {
         if (discount is < 0 or > 100)
             return false;
 
-        var order = await _mongoDbContext.Orders
-            .Find(_ => _.OrderId == orderId)
-            .FirstOrDefaultAsync();
-
+        var order = await _orders.Find(o => o.OrderId == orderId).FirstOrDefaultAsync();
         if (order is null)
             return false;
 
         var discountAmount = Math.Round(order.SubTotal * discount / 100, 2);
-        var newTotal = order.SubTotal + order.ShippingCost - discountAmount;
-
 
         var filter = Builders<Order>.Filter.And(
-            Builders<Order>.Filter.Eq(_ => _.OrderId, orderId),
-            Builders<Order>.Filter.Eq(_=>_.OrderVer, order.OrderVer));
+            Builders<Order>.Filter.Eq(o => o.OrderId, orderId),
+            Builders<Order>.Filter.Eq(o => o.OrderVer, order.OrderVer));
 
         var update = Builders<Order>.Update
-            .Set(_ => _.Discount, discountAmount)
-            .Set(_ => _.Total, newTotal)
-            .Set(_ => _.UpdatedAt, DateTime.UtcNow)
-            .Inc(_=>_.OrderVer, 1);
+            .Set(o => o.Discount, discountAmount)
+            .Set(o => o.UpdatedAt, DateTime.UtcNow)
+            .Inc(o => o.OrderVer, 1);
 
-        var result = await _mongoDbContext.Orders.UpdateOneAsync(filter, update);
-        return result.IsAcknowledged && result.MatchedCount>0 && await makeNewVersionOfOrder(orderId);
+        var result = await _orders.UpdateOneAsync(filter, update);
+        return result.IsAcknowledged && result.MatchedCount > 0;
     }
 
-    public async Task<bool> makeNewVersionOfOrder(Guid orderId)
+    public async Task<bool> UpdateOrder(Order order)
     {
-        var update=Builders<Order>.Update.Inc(_=>_.OrderVer, 1);
-        var result=await _mongoDbContext.Orders.UpdateOneAsync(_=>_.OrderId==orderId,update);
-        return result.IsAcknowledged && result.MatchedCount>0;
+        var update=Builders<Order>.Update
+            .Set(_=>_.Status, order.Status)
+            .Set(_=>_.ShippingAddress, order.ShippingAddress)
+            .Set(_=>_.BillingAddress, order.BillingAddress);
+
+        return await ApplyUpdateAsync(order.OrderId, update);
     }
 }
