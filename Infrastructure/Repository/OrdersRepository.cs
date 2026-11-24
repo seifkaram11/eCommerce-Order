@@ -57,9 +57,10 @@ public class OrdersRepository : IOrdersRepository
         {
             await _orders.InsertOneAsync(ses, order, cancellationToken: ct);
 
+            int expectedItemsCount = order.Items.Count;
+
             foreach (var item in order.Items)
-                await _publisher.Publish(
-                    new OrderCretated(order.OrderId, item.ProductId, item.ProductVariantId, item.Quantity), ct);
+                await _publisher.Publish(new OrderCretated(order.OrderId, item.ProductId, item.ProductVariantId, order.UserId,item.Quantity, expectedItemsCount, item.TotalPrice), ct);
 
             return order;
         }, ct);
@@ -73,7 +74,7 @@ public class OrdersRepository : IOrdersRepository
 
             foreach (var item in order.Items)
                 await _publisher.Publish(
-                    new OrderCanceled(item.ProductId, item.ProductVariantId, item.Quantity), ct);
+                    new ItemCanceled(orderId, item.ProductId, item.ProductVariantId), ct);
 
             return true;
         }, ct);
@@ -86,9 +87,7 @@ public class OrdersRepository : IOrdersRepository
                 return false;
 
             foreach (var order in orders)
-                foreach (var item in order.Items)
-                    await _publisher.Publish(
-                        new OrderCanceled(item.ProductId, item.ProductVariantId, item.Quantity), ct);
+                await _publisher.Publish(new OrderCanceled(order.OrderId));
 
             var ids = orders.Select(o => o.OrderId).ToList();
             var result = await _orders.DeleteManyAsync(
@@ -149,8 +148,8 @@ public class OrdersRepository : IOrdersRepository
                     return false;
             }
 
-            await _publisher.Publish(
-                new OrderCretated(orderId, item.ProductId, item.ProductVariantId, item.Quantity), ct);
+            var userId=(await _orders.Find(_=>_.OrderId==orderId).SingleOrDefaultAsync()).UserId;
+            await _publisher.Publish(new AddNewItemToOrder(orderId, item.ProductId, item.ProductVariantId, item.Quantity, item.TotalPrice), ct);
 
             return true;
         }, ct);

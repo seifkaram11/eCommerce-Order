@@ -6,7 +6,7 @@ using MongoDB.Driver;
 
 namespace Infrastructure.Consumers;
 
-class UpdateProductConsumer : IConsumer<UpdateProduct>
+public class UpdateProductConsumer : IConsumer<UpdateProduct>
 {
     OrderDbContext _orderDbContext;
 
@@ -20,7 +20,7 @@ class UpdateProductConsumer : IConsumer<UpdateProduct>
         try
         {
             var message = context.Message;
-            
+
             var update=Builders<ProductVariantCatalogEntry>.Update
             .Set(_=>_.ProductName, message.ProductName)
             .Set(_=>_.SKU, message.SKU)

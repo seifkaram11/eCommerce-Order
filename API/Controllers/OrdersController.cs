@@ -8,7 +8,7 @@ namespace API.Controller;
 
 [ApiController]
 [Route("api/V1/Orders")]
-class OrdersController:ControllerBase
+public class OrdersController:ControllerBase
 {
     private readonly IOrdersService _ordersService;
     public OrdersController(IOrdersService ordersService)
@@ -23,8 +23,7 @@ class OrdersController:ControllerBase
     {
         var order = await _ordersService.GetOrderByOrderIdAsync(id);
 
-
-        if (order == null || order.OrderId == Guid.Empty)
+        if (order == null)
             return NotFound(new { message = $"Order with ID {id} not found." });
 
         return Ok(order);

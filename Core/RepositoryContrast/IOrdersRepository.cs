@@ -1,7 +1,6 @@
 using System.Linq.Expressions;
 using Core.Entitys;
 using Core.Enums;
-using MassTransit.MongoDbIntegration;
 
 namespace Core.RepositoryContrast;
 

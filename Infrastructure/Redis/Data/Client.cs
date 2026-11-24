@@ -9,7 +9,7 @@ public class Client
 
     public Client(IConfiguration configuration)
     {
-        string conn=configuration.GetValue<string>("Redis")!;
+        string conn=configuration.GetConnectionString("Redis")!;
 
         ConnectionMultiplexer multiplexer=ConnectionMultiplexer.Connect(conn);
         _db=multiplexer.GetDatabase();

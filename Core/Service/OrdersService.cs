@@ -34,7 +34,7 @@ class OrdersService : IOrdersService
 
     public async Task<bool> AddNewItemAsync(Guid orderId, OrderItemAddRequest request, CancellationToken ct)
     {
-        var check = await _productInventoryCache.checkAvailability(orderId, request.Quantity);
+        var check = await _productInventoryCache.checkAvailability(request.ProductId, request.ProductVariantId, request.Quantity);
         if (!check)
             return false;
 
@@ -52,9 +52,7 @@ class OrdersService : IOrdersService
 
     public async Task<Order?> AddNewOrder(OrderAddRequest request, CancellationToken ct)
     {
-        bool check = (await Task.WhenAll(
-            request.Items.Select(_ => _productInventoryCache.checkAvailability(_.ProductId, _.Quantity))
-        )).All(av => av);
+        bool check = (await Task.WhenAll(request.Items.Select(_ => _productInventoryCache.checkAvailability(_.ProductId, _.ProductVariantId, _.Quantity)))).All(av => av);
 
         if (!check) return null;
 
@@ -71,7 +69,7 @@ class OrdersService : IOrdersService
         order.OrderId=Guid.NewGuid();
         order.Status=OrderStatus.Pending;
         order.CreatedAt=DateTime.Now;
-
+        order.UpdatedAt=DateTime.Now;
 
         return await _ordersRepository.CreateOrderAsync(order, ct);
     }

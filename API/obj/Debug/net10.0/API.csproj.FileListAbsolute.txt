@@ -58,3 +58,6 @@
 /home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Orders/API/obj/Debug/net10.0/API.pdb
 /home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Orders/API/obj/Debug/net10.0/API.genruntimeconfig.cache
 /home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Orders/API/obj/Debug/net10.0/ref/API.dll
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Orders/API/bin/Debug/net10.0/Swashbuckle.AspNetCore.Swagger.dll
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Orders/API/bin/Debug/net10.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Orders/API/bin/Debug/net10.0/Swashbuckle.AspNetCore.SwaggerUI.dll

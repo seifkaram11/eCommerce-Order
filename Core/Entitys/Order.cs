@@ -10,7 +10,7 @@ public class Order
 
     public OrderStatus Status { get; set; }//*
 
-    public List<OrderItem> Items { get; set; } = [];
+    public List<OrderItem> Items { get; set; }
 
     public OrderAddress ShippingAddress { get; set; } = null!;
 

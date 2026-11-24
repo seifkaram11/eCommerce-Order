@@ -6,7 +6,7 @@ using MongoDB.Driver;
 
 namespace Infrastructure.Consumers;
 
-class DeleteProductConsumer : IConsumer<DeleteProduct>
+public class DeleteProductConsumer : IConsumer<DeleteProduct>
 {
     OrderDbContext _orderDbContext;
 

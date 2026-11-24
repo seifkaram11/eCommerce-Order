@@ -11,20 +11,21 @@
           "Core": "1.0.0",
           "Infrastructure": "1.0.0",
           "Microsoft.AspNetCore.OpenApi": "10.0.10",
-          "Microsoft.OpenApi": "2.12.2"
+          "Microsoft.OpenApi": "2.12.2",
+          "Swashbuckle.AspNetCore": "10.0.1"
         },
         "runtime": {
           "API.dll": {}
         }
       },
-      "AutoMapper/16.2.0": {
+      "AutoMapper/16.3.0": {
         "dependencies": {
           "Microsoft.IdentityModel.JsonWebTokens": "8.14.0"
         },
         "runtime": {
           "lib/net10.0/AutoMapper.dll": {
             "assemblyVersion": "16.0.0.0",
-            "fileVersion": "16.2.0.0"
+            "fileVersion": "16.3.0.0"
           }
         }
       },
@@ -67,46 +68,46 @@
           }
         }
       },
-      "MassTransit/9.2.3": {
+      "MassTransit/8.5.12": {
         "dependencies": {
-          "MassTransit.Abstractions": "9.2.3"
+          "MassTransit.Abstractions": "8.5.12"
         },
         "runtime": {
           "lib/net10.0/MassTransit.dll": {
-            "assemblyVersion": "9.2.3.0",
-            "fileVersion": "9.2.3.0"
+            "assemblyVersion": "8.5.12.0",
+            "fileVersion": "8.5.12.0"
           }
         }
       },
-      "MassTransit.Abstractions/9.2.3": {
+      "MassTransit.Abstractions/8.5.12": {
         "runtime": {
           "lib/net10.0/MassTransit.Abstractions.dll": {
-            "assemblyVersion": "9.2.3.0",
-            "fileVersion": "9.2.3.0"
+            "assemblyVersion": "8.5.12.0",
+            "fileVersion": "8.5.12.0"
           }
         }
       },
-      "MassTransit.MongoDb/9.2.3": {
+      "MassTransit.MongoDb/8.5.12": {
         "dependencies": {
-          "MassTransit": "9.2.3",
+          "MassTransit": "8.5.12",
           "MongoDB.Driver": "3.12.0"
         },
         "runtime": {
           "lib/net10.0/MassTransit.MongoDbIntegration.dll": {
-            "assemblyVersion": "9.2.3.0",
-            "fileVersion": "9.2.3.0"
+            "assemblyVersion": "8.5.12.0",
+            "fileVersion": "8.5.12.0"
           }
         }
       },
-      "MassTransit.RabbitMQ/9.2.3": {
+      "MassTransit.RabbitMQ/8.5.12": {
         "dependencies": {
-          "MassTransit": "9.2.3",
+          "MassTransit": "8.5.12",
           "RabbitMQ.Client": "7.2.2"
         },
         "runtime": {
           "lib/net10.0/MassTransit.RabbitMqTransport.dll": {
-            "assemblyVersion": "9.2.3.0",
-            "fileVersion": "9.2.3.0"
+            "assemblyVersion": "8.5.12.0",
+            "fileVersion": "8.5.12.0"
           }
         }
       },
@@ -237,6 +238,43 @@
           }
         }
       },
+      "Swashbuckle.AspNetCore/10.0.1": {
+        "dependencies": {
+          "Swashbuckle.AspNetCore.Swagger": "10.0.1",
+          "Swashbuckle.AspNetCore.SwaggerGen": "10.0.1",
+          "Swashbuckle.AspNetCore.SwaggerUI": "10.0.1"
+        }
+      },
+      "Swashbuckle.AspNetCore.Swagger/10.0.1": {
+        "dependencies": {
+          "Microsoft.OpenApi": "2.12.2"
+        },
+        "runtime": {
+          "lib/net10.0/Swashbuckle.AspNetCore.Swagger.dll": {
+            "assemblyVersion": "10.0.1.0",
+            "fileVersion": "10.0.1.1964"
+          }
+        }
+      },
+      "Swashbuckle.AspNetCore.SwaggerGen/10.0.1": {
+        "dependencies": {
+          "Swashbuckle.AspNetCore.Swagger": "10.0.1"
+        },
+        "runtime": {
+          "lib/net10.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {
+            "assemblyVersion": "10.0.1.0",
+            "fileVersion": "10.0.1.1964"
+          }
+        }
+      },
+      "Swashbuckle.AspNetCore.SwaggerUI/10.0.1": {
+        "runtime": {
+          "lib/net10.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {
+            "assemblyVersion": "10.0.1.0",
+            "fileVersion": "10.0.1.1964"
+          }
+        }
+      },
       "System.IO.Hashing/10.0.12": {
         "runtime": {
           "lib/net10.0/System.IO.Hashing.dll": {
@@ -255,9 +293,8 @@
       },
       "Core/1.0.0": {
         "dependencies": {
-          "AutoMapper": "16.2.0",
-          "FluentValidation.AspNetCore": "11.3.1",
-          "MassTransit.MongoDb": "9.2.3"
+          "AutoMapper": "16.3.0",
+          "FluentValidation.AspNetCore": "11.3.1"
         },
         "runtime": {
           "Core.dll": {
@@ -269,8 +306,8 @@
       "Infrastructure/1.0.0": {
         "dependencies": {
           "Core": "1.0.0",
-          "MassTransit.MongoDb": "9.2.3",
-          "MassTransit.RabbitMQ": "9.2.3",
+          "MassTransit.MongoDb": "8.5.12",
+          "MassTransit.RabbitMQ": "8.5.12",
           "MongoDB.Driver": "3.12.0",
           "StackExchange.Redis": "3.4.5"
         },
@@ -289,12 +326,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "AutoMapper/16.2.0": {
+    "AutoMapper/16.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-PE8HgPc5BZJnAFwjvDTE72gWL6YrYib+V7+vxtLXDYz0CH/fFgbVcwLUC9UHk5ALwspZ6Vbmoo6PHvseIk/0ZA==",
-      "path": "automapper/16.2.0",
-      "hashPath": "automapper.16.2.0.nupkg.sha512"
+      "sha512": "sha512-wFTqA37e1I4AOEhTTYlxrqDE8BQ4OB3dqhlv2KwYmHv+a4tn7R1JW2n2bzXb8eTBhWVBSl7iTZ0VxEt0a57D4w==",
+      "path": "automapper/16.3.0",
+      "hashPath": "automapper.16.3.0.nupkg.sha512"
     },
     "DnsClient/1.6.1": {
       "type": "package",
@@ -324,33 +361,33 @@
       "path": "fluentvalidation.dependencyinjectionextensions/11.11.0",
       "hashPath": "fluentvalidation.dependencyinjectionextensions.11.11.0.nupkg.sha512"
     },
-    "MassTransit/9.2.3": {
+    "MassTransit/8.5.12": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-exbI8yF4w8swAOj5cHiZVyWWWb/O/d0x1hBrD8nvFcAk4iMjEyvg1i+8zvgOsfYkSZp4horycBJVLAQPv1gFbw==",
-      "path": "masstransit/9.2.3",
-      "hashPath": "masstransit.9.2.3.nupkg.sha512"
+      "sha512": "sha512-qpesi9ZPcT3+1w7HLw4rtkS0MRiX90WSaFNp3CXdaTGKhdmZn3nIozysvEpdoVfLM4Bwq9Kx7okGxRvLBY9Qcw==",
+      "path": "masstransit/8.5.12",
+      "hashPath": "masstransit.8.5.12.nupkg.sha512"
     },
-    "MassTransit.Abstractions/9.2.3": {
+    "MassTransit.Abstractions/8.5.12": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-D0y98XbWq4Su8YCn1Y3WvQKy3Mn6SS5DGp1vkICy0TpPPzGQI6EPTMmITiim0KCf/WXgh/mRIP9UswIZVDuRjw==",
-      "path": "masstransit.abstractions/9.2.3",
-      "hashPath": "masstransit.abstractions.9.2.3.nupkg.sha512"
+      "sha512": "sha512-NauNyaQsJVfLSY3Jw/zr26POQpEnfjerHCrrK3kUmkCDIpC63PZD1AjihGFgq0KH5eGagMJ7GRHN74w8mI69Kg==",
+      "path": "masstransit.abstractions/8.5.12",
+      "hashPath": "masstransit.abstractions.8.5.12.nupkg.sha512"
     },
-    "MassTransit.MongoDb/9.2.3": {
+    "MassTransit.MongoDb/8.5.12": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-n+BpdbEEjibUwEF/g0yL/xeOWvg7oxiOgVKA448CfNlWQHt+NXIM5ELxNV04SurR6cxQbYt9M+CV/os746nGdA==",
-      "path": "masstransit.mongodb/9.2.3",
-      "hashPath": "masstransit.mongodb.9.2.3.nupkg.sha512"
+      "sha512": "sha512-8pycnZQCT7nY8fBXfnlyvT+nGgyamjuUBwVAF80TkLvr+jphvFPlz08Rapq7jijoT31byoEl9Au7YQdwALMunw==",
+      "path": "masstransit.mongodb/8.5.12",
+      "hashPath": "masstransit.mongodb.8.5.12.nupkg.sha512"
     },
-    "MassTransit.RabbitMQ/9.2.3": {
+    "MassTransit.RabbitMQ/8.5.12": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-leInIa/ogii5hzKmqbU8DdlYGDUwODoUcIcx8Vlu4NZjjmGoiCdPybDdgeRpSt/ebmar0MHL9m4sainogXU6jQ==",
-      "path": "masstransit.rabbitmq/9.2.3",
-      "hashPath": "masstransit.rabbitmq.9.2.3.nupkg.sha512"
+      "sha512": "sha512-j8MQni+zMmUpAQ8VKIcuBakJ2ptZy0wSahd1LCVyRUvFrI8Bg0YtFsRk6w0/R1hdD3u0TuMvPKQAaNIZe8nSxQ==",
+      "path": "masstransit.rabbitmq/8.5.12",
+      "hashPath": "masstransit.rabbitmq.8.5.12.nupkg.sha512"
     },
     "Microsoft.AspNetCore.OpenApi/10.0.10": {
       "type": "package",
@@ -442,6 +479,34 @@
       "sha512": "sha512-LtbEuNmaW6N75tvLAlXoDGDJHTCwmrHFL8/9OeQknWoCWcZhUcUnPvG2ijSO7tTyC7XID9LskIu42spa0b/nMQ==",
       "path": "stackexchange.redis/3.4.5",
       "hashPath": "stackexchange.redis.3.4.5.nupkg.sha512"
+    },
+    "Swashbuckle.AspNetCore/10.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-177+JNAV5TNvy8gLCdrcWBY9n2jdkxiHQDY4vhaExeqUpKrOqDatCcm/kW3kze60GqfnZ2NobD/IKiAPOL+CEw==",
+      "path": "swashbuckle.aspnetcore/10.0.1",
+      "hashPath": "swashbuckle.aspnetcore.10.0.1.nupkg.sha512"
+    },
+    "Swashbuckle.AspNetCore.Swagger/10.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HJYFSP18YF1Z6LCwunL+v8wuZUzzvcjarB8AJna/NVVIpq11FH9BW/D/6abwigu7SsKRbisStmk8xu2mTsxxHg==",
+      "path": "swashbuckle.aspnetcore.swagger/10.0.1",
+      "hashPath": "swashbuckle.aspnetcore.swagger.10.0.1.nupkg.sha512"
+    },
+    "Swashbuckle.AspNetCore.SwaggerGen/10.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vMMBDiTC53KclPs1aiedRZnXkoI2ZgF5/JFr3Dqr8KT7wvIbA/MwD+ormQ4qf25gN5xCrJbmz/9/Z3RrpSofMA==",
+      "path": "swashbuckle.aspnetcore.swaggergen/10.0.1",
+      "hashPath": "swashbuckle.aspnetcore.swaggergen.10.0.1.nupkg.sha512"
+    },
+    "Swashbuckle.AspNetCore.SwaggerUI/10.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-a2eLI/fCxJ3WH+H1hr7Q2T82ZBk20FfqYBEZ9hOr3f+426ZUfGU2LxYWzOJrf5/4y6EKShmWpjJG01h3Rc+l6Q==",
+      "path": "swashbuckle.aspnetcore.swaggerui/10.0.1",
+      "hashPath": "swashbuckle.aspnetcore.swaggerui.10.0.1.nupkg.sha512"
     },
     "System.IO.Hashing/10.0.12": {
       "type": "package",

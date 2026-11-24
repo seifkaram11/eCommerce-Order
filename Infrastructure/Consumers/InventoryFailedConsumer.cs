@@ -5,7 +5,7 @@ using MassTransit;
 
 namespace Infrastructure.Consumers;
 
-class StockReservationFailedConsumer : IConsumer<StockReservationFailed>
+public class StockReservationFailedConsumer : IConsumer<StockReservationFailed>
 {
     IOrdersRepository _ordersRepository;
 

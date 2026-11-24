@@ -5,7 +5,7 @@ using MassTransit;
 
 namespace Infrastructure.Consumers;
 
-class NewProductConsumer : IConsumer<NewProduct>
+public class NewProductConsumer : IConsumer<NewProduct>
 {
     OrderDbContext _orderDbContext;
 

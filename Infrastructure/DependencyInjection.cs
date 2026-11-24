@@ -20,16 +20,24 @@ public static class DependencyInjection
     {
         MongoConfigurations.RegisterAll();
 
-        services.AddSingleton<IMongoClient>(_ =>
+        services.AddSingleton<IMongoClient>(sp =>
         {
-            var settings = _.GetRequiredService<IOptions<MongoDbSettings>>().Value;
+            var settings = sp
+                .GetRequiredService<IOptions<MongoDbSettings>>()
+                .Value;
+
             return new MongoClient(settings.ConnectionString);
         });
 
-        services.AddSingleton<IMongoDatabase>(_ =>
+        services.AddSingleton<IMongoDatabase>(sp =>
         {
-            var clien=_.GetRequiredService<IMongoClient>();
-            return clien.GetDatabase(configuration.GetValue<string>("MongoDb:DbName"));
+            var settings = sp
+                .GetRequiredService<IOptions<MongoDbSettings>>()
+                .Value;
+
+            var client = sp.GetRequiredService<IMongoClient>();
+
+            return client.GetDatabase(settings.DbName);
         });
 
         services.AddScoped<OrderDbContext>();
@@ -69,6 +77,8 @@ public static class DependencyInjection
         services.AddScoped<Client>();
 
         services.AddScoped<IProductInventoryCache, ProductInventoryCache>();
+
+        services.AddScoped<IProductVariantCatalogEntryRepository,ProductVariantCatalogEntryRepository>();
         return services;
     }
 }

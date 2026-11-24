@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net10.0": {
-      "AutoMapper/16.2.0": {
+      "AutoMapper/16.3.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Logging.Abstractions": "10.0.0",
@@ -83,10 +83,10 @@
           }
         }
       },
-      "MassTransit/9.2.3": {
+      "MassTransit/8.5.12": {
         "type": "package",
         "dependencies": {
-          "MassTransit.Abstractions": "9.2.3",
+          "MassTransit.Abstractions": "8.5.12",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.0",
           "Microsoft.Extensions.Diagnostics.HealthChecks": "10.0.0",
           "Microsoft.Extensions.Hosting.Abstractions": "10.0.0",
@@ -104,7 +104,7 @@
           }
         }
       },
-      "MassTransit.Abstractions/9.2.3": {
+      "MassTransit.Abstractions/8.5.12": {
         "type": "package",
         "compile": {
           "lib/net10.0/MassTransit.Abstractions.dll": {
@@ -117,10 +117,10 @@
           }
         }
       },
-      "MassTransit.MongoDb/9.2.3": {
+      "MassTransit.MongoDb/8.5.12": {
         "type": "package",
         "dependencies": {
-          "MassTransit": "9.2.3",
+          "MassTransit": "8.5.12",
           "MongoDB.Driver": "3.12.0"
         },
         "compile": {
@@ -134,10 +134,10 @@
           }
         }
       },
-      "MassTransit.RabbitMQ/9.2.3": {
+      "MassTransit.RabbitMQ/8.5.12": {
         "type": "package",
         "dependencies": {
-          "MassTransit": "9.2.3",
+          "MassTransit": "8.5.12",
           "RabbitMQ.Client": "7.2.2"
         },
         "compile": {
@@ -151,10 +151,10 @@
           }
         }
       },
-      "Microsoft.Extensions.Configuration.Abstractions/10.0.13": {
+      "Microsoft.Extensions.Configuration.Abstractions/10.0.15": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Primitives": "10.0.13"
+          "Microsoft.Extensions.Primitives": "10.0.15"
         },
         "compile": {
           "lib/net10.0/Microsoft.Extensions.Configuration.Abstractions.dll": {
@@ -170,7 +170,7 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "Microsoft.Extensions.DependencyInjection.Abstractions/10.0.13": {
+      "Microsoft.Extensions.DependencyInjection.Abstractions/10.0.15": {
         "type": "package",
         "compile": {
           "lib/net10.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
@@ -319,7 +319,7 @@
           "buildTransitive/net8.0/Microsoft.Extensions.Options.targets": {}
         }
       },
-      "Microsoft.Extensions.Primitives/10.0.13": {
+      "Microsoft.Extensions.Primitives/10.0.15": {
         "type": "package",
         "compile": {
           "lib/net10.0/Microsoft.Extensions.Primitives.dll": {
@@ -544,9 +544,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
-          "AutoMapper": "16.2.0",
+          "AutoMapper": "16.3.0",
           "FluentValidation.AspNetCore": "11.3.1",
-          "MassTransit.MongoDb": "9.2.3",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.11"
         },
         "compile": {
@@ -559,16 +558,16 @@
     }
   },
   "libraries": {
-    "AutoMapper/16.2.0": {
-      "sha512": "PE8HgPc5BZJnAFwjvDTE72gWL6YrYib+V7+vxtLXDYz0CH/fFgbVcwLUC9UHk5ALwspZ6Vbmoo6PHvseIk/0ZA==",
+    "AutoMapper/16.3.0": {
+      "sha512": "wFTqA37e1I4AOEhTTYlxrqDE8BQ4OB3dqhlv2KwYmHv+a4tn7R1JW2n2bzXb8eTBhWVBSl7iTZ0VxEt0a57D4w==",
       "type": "package",
-      "path": "automapper/16.2.0",
+      "path": "automapper/16.3.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.md",
         "README.md",
-        "automapper.16.2.0.nupkg.sha512",
+        "automapper.16.3.0.nupkg.sha512",
         "automapper.nuspec",
         "icon.png",
         "lib/net10.0/AutoMapper.dll",
@@ -668,10 +667,10 @@
         "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.xml"
       ]
     },
-    "MassTransit/9.2.3": {
-      "sha512": "exbI8yF4w8swAOj5cHiZVyWWWb/O/d0x1hBrD8nvFcAk4iMjEyvg1i+8zvgOsfYkSZp4horycBJVLAQPv1gFbw==",
+    "MassTransit/8.5.12": {
+      "sha512": "qpesi9ZPcT3+1w7HLw4rtkS0MRiX90WSaFNp3CXdaTGKhdmZn3nIozysvEpdoVfLM4Bwq9Kx7okGxRvLBY9Qcw==",
       "type": "package",
-      "path": "masstransit/9.2.3",
+      "path": "masstransit/8.5.12",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -686,15 +685,15 @@
         "lib/net9.0/MassTransit.xml",
         "lib/netstandard2.0/MassTransit.dll",
         "lib/netstandard2.0/MassTransit.xml",
-        "masstransit.9.2.3.nupkg.sha512",
+        "masstransit.8.5.12.nupkg.sha512",
         "masstransit.nuspec",
         "mt-logo-small.png"
       ]
     },
-    "MassTransit.Abstractions/9.2.3": {
-      "sha512": "D0y98XbWq4Su8YCn1Y3WvQKy3Mn6SS5DGp1vkICy0TpPPzGQI6EPTMmITiim0KCf/WXgh/mRIP9UswIZVDuRjw==",
+    "MassTransit.Abstractions/8.5.12": {
+      "sha512": "NauNyaQsJVfLSY3Jw/zr26POQpEnfjerHCrrK3kUmkCDIpC63PZD1AjihGFgq0KH5eGagMJ7GRHN74w8mI69Kg==",
       "type": "package",
-      "path": "masstransit.abstractions/9.2.3",
+      "path": "masstransit.abstractions/8.5.12",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -709,15 +708,15 @@
         "lib/net9.0/MassTransit.Abstractions.xml",
         "lib/netstandard2.0/MassTransit.Abstractions.dll",
         "lib/netstandard2.0/MassTransit.Abstractions.xml",
-        "masstransit.abstractions.9.2.3.nupkg.sha512",
+        "masstransit.abstractions.8.5.12.nupkg.sha512",
         "masstransit.abstractions.nuspec",
         "mt-logo-small.png"
       ]
     },
-    "MassTransit.MongoDb/9.2.3": {
-      "sha512": "n+BpdbEEjibUwEF/g0yL/xeOWvg7oxiOgVKA448CfNlWQHt+NXIM5ELxNV04SurR6cxQbYt9M+CV/os746nGdA==",
+    "MassTransit.MongoDb/8.5.12": {
+      "sha512": "8pycnZQCT7nY8fBXfnlyvT+nGgyamjuUBwVAF80TkLvr+jphvFPlz08Rapq7jijoT31byoEl9Au7YQdwALMunw==",
       "type": "package",
-      "path": "masstransit.mongodb/9.2.3",
+      "path": "masstransit.mongodb/8.5.12",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -732,15 +731,15 @@
         "lib/net9.0/MassTransit.MongoDbIntegration.xml",
         "lib/netstandard2.1/MassTransit.MongoDbIntegration.dll",
         "lib/netstandard2.1/MassTransit.MongoDbIntegration.xml",
-        "masstransit.mongodb.9.2.3.nupkg.sha512",
+        "masstransit.mongodb.8.5.12.nupkg.sha512",
         "masstransit.mongodb.nuspec",
         "mt-logo-small.png"
       ]
     },
-    "MassTransit.RabbitMQ/9.2.3": {
-      "sha512": "leInIa/ogii5hzKmqbU8DdlYGDUwODoUcIcx8Vlu4NZjjmGoiCdPybDdgeRpSt/ebmar0MHL9m4sainogXU6jQ==",
+    "MassTransit.RabbitMQ/8.5.12": {
+      "sha512": "j8MQni+zMmUpAQ8VKIcuBakJ2ptZy0wSahd1LCVyRUvFrI8Bg0YtFsRk6w0/R1hdD3u0TuMvPKQAaNIZe8nSxQ==",
       "type": "package",
-      "path": "masstransit.rabbitmq/9.2.3",
+      "path": "masstransit.rabbitmq/8.5.12",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -755,15 +754,15 @@
         "lib/net9.0/MassTransit.RabbitMqTransport.xml",
         "lib/netstandard2.0/MassTransit.RabbitMqTransport.dll",
         "lib/netstandard2.0/MassTransit.RabbitMqTransport.xml",
-        "masstransit.rabbitmq.9.2.3.nupkg.sha512",
+        "masstransit.rabbitmq.8.5.12.nupkg.sha512",
         "masstransit.rabbitmq.nuspec",
         "mt-logo-small.png"
       ]
     },
-    "Microsoft.Extensions.Configuration.Abstractions/10.0.13": {
-      "sha512": "DY4C2qzTt2lOIY3VoscBH/TCwTolI5DKOfgJLuI+k1QUvRNT5vTMS58AOerNiihdVRStO0wEpLeRWA8jytzHBQ==",
+    "Microsoft.Extensions.Configuration.Abstractions/10.0.15": {
+      "sha512": "0vztB/x4zuR/KT82cgTiiw9DqigfT1FjBgq9FjEFvJUgeacjTG4e7hWD2PCRXzL2kWWl/vBAwtXddIRV3AIU6Q==",
       "type": "package",
-      "path": "microsoft.extensions.configuration.abstractions/10.0.13",
+      "path": "microsoft.extensions.configuration.abstractions/10.0.15",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -784,15 +783,15 @@
         "lib/net9.0/Microsoft.Extensions.Configuration.Abstractions.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.xml",
-        "microsoft.extensions.configuration.abstractions.10.0.13.nupkg.sha512",
+        "microsoft.extensions.configuration.abstractions.10.0.15.nupkg.sha512",
         "microsoft.extensions.configuration.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.DependencyInjection.Abstractions/10.0.13": {
-      "sha512": "G2GrGWNAPZBsii2F6AU8n+JT2tC1/I0Ml/e9ZyNCgPjf3hZqronP7o0X91aAynCmVeae8KkSIUNXXeXCNRmdVQ==",
+    "Microsoft.Extensions.DependencyInjection.Abstractions/10.0.15": {
+      "sha512": "KczR2nV7ooeimtZxAawPht/FJUHnX+uoWy7y4pba+iaRQBwUM2NwtiqZg+/FpZDHUf2RkkzveGkhMTWDNzmDUA==",
       "type": "package",
-      "path": "microsoft.extensions.dependencyinjection.abstractions/10.0.13",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/10.0.15",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -815,7 +814,7 @@
         "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
         "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
         "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
-        "microsoft.extensions.dependencyinjection.abstractions.10.0.13.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.abstractions.10.0.15.nupkg.sha512",
         "microsoft.extensions.dependencyinjection.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -1064,10 +1063,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Primitives/10.0.13": {
-      "sha512": "ZjTwxzhiw2TMEzIbUDkMF0dfDB2I4NQgIfKD0ELu9/5Mk+SRGdKZcD0/lvBrRCAPo6KN2r0BW86MRancoyJkoA==",
+    "Microsoft.Extensions.Primitives/10.0.15": {
+      "sha512": "NjzLiZ1/bYx8VwLqHxNnCfDTQQbCY7P1dwT7JM5FiANiaSfI6UKHi0/sla+jyRbOIbPAMJkhWQ/9pH3tMf+IrQ==",
       "type": "package",
-      "path": "microsoft.extensions.primitives/10.0.13",
+      "path": "microsoft.extensions.primitives/10.0.15",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1088,7 +1087,7 @@
         "lib/net9.0/Microsoft.Extensions.Primitives.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Primitives.xml",
-        "microsoft.extensions.primitives.10.0.13.nupkg.sha512",
+        "microsoft.extensions.primitives.10.0.15.nupkg.sha512",
         "microsoft.extensions.primitives.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -1413,8 +1412,8 @@
   "projectFileDependencyGroups": {
     "net10.0": [
       "Core >= 1.0.0",
-      "MassTransit.MongoDb >= 9.2.3",
-      "MassTransit.RabbitMQ >= 9.2.3",
+      "MassTransit.MongoDb >= 8.5.12",
+      "MassTransit.RabbitMQ >= 8.5.12",
       "Microsoft.Extensions.Configuration.Abstractions >= 10.*",
       "Microsoft.Extensions.DependencyInjection.Abstractions >= 10.*",
       "MongoDB.Driver >= 3.12.0",
@@ -1471,11 +1470,11 @@
         "dependencies": {
           "MassTransit.MongoDb": {
             "target": "Package",
-            "version": "[9.2.3, )"
+            "version": "[8.5.12, )"
           },
           "MassTransit.RabbitMQ": {
             "target": "Package",
-            "version": "[9.2.3, )"
+            "version": "[8.5.12, )"
           },
           "Microsoft.Extensions.Configuration.Abstractions": {
             "target": "Package",
@@ -1510,7 +1509,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/10.0.111/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/10.0.113/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",

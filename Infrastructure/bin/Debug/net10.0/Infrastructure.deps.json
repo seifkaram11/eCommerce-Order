@@ -9,10 +9,10 @@
       "Infrastructure/1.0.0": {
         "dependencies": {
           "Core": "1.0.0",
-          "MassTransit.MongoDb": "9.2.3",
-          "MassTransit.RabbitMQ": "9.2.3",
-          "Microsoft.Extensions.Configuration.Abstractions": "10.0.13",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.13",
+          "MassTransit.MongoDb": "8.5.12",
+          "MassTransit.RabbitMQ": "8.5.12",
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.15",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.15",
           "MongoDB.Driver": "3.12.0",
           "StackExchange.Redis": "3.4.5"
         },
@@ -20,14 +20,14 @@
           "Infrastructure.dll": {}
         }
       },
-      "AutoMapper/16.2.0": {
+      "AutoMapper/16.3.0": {
         "dependencies": {
           "Microsoft.IdentityModel.JsonWebTokens": "8.14.0"
         },
         "runtime": {
           "lib/net10.0/AutoMapper.dll": {
             "assemblyVersion": "16.0.0.0",
-            "fileVersion": "16.2.0.0"
+            "fileVersion": "16.3.0.0"
           }
         }
       },
@@ -62,7 +62,7 @@
       "FluentValidation.DependencyInjectionExtensions/11.11.0": {
         "dependencies": {
           "FluentValidation": "11.11.0",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.13"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.15"
         },
         "runtime": {
           "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll": {
@@ -71,74 +71,74 @@
           }
         }
       },
-      "MassTransit/9.2.3": {
+      "MassTransit/8.5.12": {
         "dependencies": {
-          "MassTransit.Abstractions": "9.2.3",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.13"
+          "MassTransit.Abstractions": "8.5.12",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.15"
         },
         "runtime": {
           "lib/net10.0/MassTransit.dll": {
-            "assemblyVersion": "9.2.3.0",
-            "fileVersion": "9.2.3.0"
+            "assemblyVersion": "8.5.12.0",
+            "fileVersion": "8.5.12.0"
           }
         }
       },
-      "MassTransit.Abstractions/9.2.3": {
+      "MassTransit.Abstractions/8.5.12": {
         "runtime": {
           "lib/net10.0/MassTransit.Abstractions.dll": {
-            "assemblyVersion": "9.2.3.0",
-            "fileVersion": "9.2.3.0"
+            "assemblyVersion": "8.5.12.0",
+            "fileVersion": "8.5.12.0"
           }
         }
       },
-      "MassTransit.MongoDb/9.2.3": {
+      "MassTransit.MongoDb/8.5.12": {
         "dependencies": {
-          "MassTransit": "9.2.3",
+          "MassTransit": "8.5.12",
           "MongoDB.Driver": "3.12.0"
         },
         "runtime": {
           "lib/net10.0/MassTransit.MongoDbIntegration.dll": {
-            "assemblyVersion": "9.2.3.0",
-            "fileVersion": "9.2.3.0"
+            "assemblyVersion": "8.5.12.0",
+            "fileVersion": "8.5.12.0"
           }
         }
       },
-      "MassTransit.RabbitMQ/9.2.3": {
+      "MassTransit.RabbitMQ/8.5.12": {
         "dependencies": {
-          "MassTransit": "9.2.3",
+          "MassTransit": "8.5.12",
           "RabbitMQ.Client": "7.2.2"
         },
         "runtime": {
           "lib/net10.0/MassTransit.RabbitMqTransport.dll": {
-            "assemblyVersion": "9.2.3.0",
-            "fileVersion": "9.2.3.0"
+            "assemblyVersion": "8.5.12.0",
+            "fileVersion": "8.5.12.0"
           }
         }
       },
-      "Microsoft.Extensions.Configuration.Abstractions/10.0.13": {
+      "Microsoft.Extensions.Configuration.Abstractions/10.0.15": {
         "dependencies": {
-          "Microsoft.Extensions.Primitives": "10.0.13"
+          "Microsoft.Extensions.Primitives": "10.0.15"
         },
         "runtime": {
           "lib/net10.0/Microsoft.Extensions.Configuration.Abstractions.dll": {
             "assemblyVersion": "10.0.0.0",
-            "fileVersion": "10.0.1326.50504"
+            "fileVersion": "10.0.1526.53008"
           }
         }
       },
-      "Microsoft.Extensions.DependencyInjection.Abstractions/10.0.13": {
+      "Microsoft.Extensions.DependencyInjection.Abstractions/10.0.15": {
         "runtime": {
           "lib/net10.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
             "assemblyVersion": "10.0.0.0",
-            "fileVersion": "10.0.1326.50504"
+            "fileVersion": "10.0.1526.53008"
           }
         }
       },
-      "Microsoft.Extensions.Primitives/10.0.13": {
+      "Microsoft.Extensions.Primitives/10.0.15": {
         "runtime": {
           "lib/net10.0/Microsoft.Extensions.Primitives.dll": {
             "assemblyVersion": "10.0.0.0",
-            "fileVersion": "10.0.1326.50504"
+            "fileVersion": "10.0.1526.53008"
           }
         }
       },
@@ -268,10 +268,9 @@
       },
       "Core/1.0.0": {
         "dependencies": {
-          "AutoMapper": "16.2.0",
+          "AutoMapper": "16.3.0",
           "FluentValidation.AspNetCore": "11.3.1",
-          "MassTransit.MongoDb": "9.2.3",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.13"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.15"
         },
         "runtime": {
           "Core.dll": {
@@ -288,12 +287,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "AutoMapper/16.2.0": {
+    "AutoMapper/16.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-PE8HgPc5BZJnAFwjvDTE72gWL6YrYib+V7+vxtLXDYz0CH/fFgbVcwLUC9UHk5ALwspZ6Vbmoo6PHvseIk/0ZA==",
-      "path": "automapper/16.2.0",
-      "hashPath": "automapper.16.2.0.nupkg.sha512"
+      "sha512": "sha512-wFTqA37e1I4AOEhTTYlxrqDE8BQ4OB3dqhlv2KwYmHv+a4tn7R1JW2n2bzXb8eTBhWVBSl7iTZ0VxEt0a57D4w==",
+      "path": "automapper/16.3.0",
+      "hashPath": "automapper.16.3.0.nupkg.sha512"
     },
     "DnsClient/1.6.1": {
       "type": "package",
@@ -323,54 +322,54 @@
       "path": "fluentvalidation.dependencyinjectionextensions/11.11.0",
       "hashPath": "fluentvalidation.dependencyinjectionextensions.11.11.0.nupkg.sha512"
     },
-    "MassTransit/9.2.3": {
+    "MassTransit/8.5.12": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-exbI8yF4w8swAOj5cHiZVyWWWb/O/d0x1hBrD8nvFcAk4iMjEyvg1i+8zvgOsfYkSZp4horycBJVLAQPv1gFbw==",
-      "path": "masstransit/9.2.3",
-      "hashPath": "masstransit.9.2.3.nupkg.sha512"
+      "sha512": "sha512-qpesi9ZPcT3+1w7HLw4rtkS0MRiX90WSaFNp3CXdaTGKhdmZn3nIozysvEpdoVfLM4Bwq9Kx7okGxRvLBY9Qcw==",
+      "path": "masstransit/8.5.12",
+      "hashPath": "masstransit.8.5.12.nupkg.sha512"
     },
-    "MassTransit.Abstractions/9.2.3": {
+    "MassTransit.Abstractions/8.5.12": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-D0y98XbWq4Su8YCn1Y3WvQKy3Mn6SS5DGp1vkICy0TpPPzGQI6EPTMmITiim0KCf/WXgh/mRIP9UswIZVDuRjw==",
-      "path": "masstransit.abstractions/9.2.3",
-      "hashPath": "masstransit.abstractions.9.2.3.nupkg.sha512"
+      "sha512": "sha512-NauNyaQsJVfLSY3Jw/zr26POQpEnfjerHCrrK3kUmkCDIpC63PZD1AjihGFgq0KH5eGagMJ7GRHN74w8mI69Kg==",
+      "path": "masstransit.abstractions/8.5.12",
+      "hashPath": "masstransit.abstractions.8.5.12.nupkg.sha512"
     },
-    "MassTransit.MongoDb/9.2.3": {
+    "MassTransit.MongoDb/8.5.12": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-n+BpdbEEjibUwEF/g0yL/xeOWvg7oxiOgVKA448CfNlWQHt+NXIM5ELxNV04SurR6cxQbYt9M+CV/os746nGdA==",
-      "path": "masstransit.mongodb/9.2.3",
-      "hashPath": "masstransit.mongodb.9.2.3.nupkg.sha512"
+      "sha512": "sha512-8pycnZQCT7nY8fBXfnlyvT+nGgyamjuUBwVAF80TkLvr+jphvFPlz08Rapq7jijoT31byoEl9Au7YQdwALMunw==",
+      "path": "masstransit.mongodb/8.5.12",
+      "hashPath": "masstransit.mongodb.8.5.12.nupkg.sha512"
     },
-    "MassTransit.RabbitMQ/9.2.3": {
+    "MassTransit.RabbitMQ/8.5.12": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-leInIa/ogii5hzKmqbU8DdlYGDUwODoUcIcx8Vlu4NZjjmGoiCdPybDdgeRpSt/ebmar0MHL9m4sainogXU6jQ==",
-      "path": "masstransit.rabbitmq/9.2.3",
-      "hashPath": "masstransit.rabbitmq.9.2.3.nupkg.sha512"
+      "sha512": "sha512-j8MQni+zMmUpAQ8VKIcuBakJ2ptZy0wSahd1LCVyRUvFrI8Bg0YtFsRk6w0/R1hdD3u0TuMvPKQAaNIZe8nSxQ==",
+      "path": "masstransit.rabbitmq/8.5.12",
+      "hashPath": "masstransit.rabbitmq.8.5.12.nupkg.sha512"
     },
-    "Microsoft.Extensions.Configuration.Abstractions/10.0.13": {
+    "Microsoft.Extensions.Configuration.Abstractions/10.0.15": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-DY4C2qzTt2lOIY3VoscBH/TCwTolI5DKOfgJLuI+k1QUvRNT5vTMS58AOerNiihdVRStO0wEpLeRWA8jytzHBQ==",
-      "path": "microsoft.extensions.configuration.abstractions/10.0.13",
-      "hashPath": "microsoft.extensions.configuration.abstractions.10.0.13.nupkg.sha512"
+      "sha512": "sha512-0vztB/x4zuR/KT82cgTiiw9DqigfT1FjBgq9FjEFvJUgeacjTG4e7hWD2PCRXzL2kWWl/vBAwtXddIRV3AIU6Q==",
+      "path": "microsoft.extensions.configuration.abstractions/10.0.15",
+      "hashPath": "microsoft.extensions.configuration.abstractions.10.0.15.nupkg.sha512"
     },
-    "Microsoft.Extensions.DependencyInjection.Abstractions/10.0.13": {
+    "Microsoft.Extensions.DependencyInjection.Abstractions/10.0.15": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-G2GrGWNAPZBsii2F6AU8n+JT2tC1/I0Ml/e9ZyNCgPjf3hZqronP7o0X91aAynCmVeae8KkSIUNXXeXCNRmdVQ==",
-      "path": "microsoft.extensions.dependencyinjection.abstractions/10.0.13",
-      "hashPath": "microsoft.extensions.dependencyinjection.abstractions.10.0.13.nupkg.sha512"
+      "sha512": "sha512-KczR2nV7ooeimtZxAawPht/FJUHnX+uoWy7y4pba+iaRQBwUM2NwtiqZg+/FpZDHUf2RkkzveGkhMTWDNzmDUA==",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/10.0.15",
+      "hashPath": "microsoft.extensions.dependencyinjection.abstractions.10.0.15.nupkg.sha512"
     },
-    "Microsoft.Extensions.Primitives/10.0.13": {
+    "Microsoft.Extensions.Primitives/10.0.15": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ZjTwxzhiw2TMEzIbUDkMF0dfDB2I4NQgIfKD0ELu9/5Mk+SRGdKZcD0/lvBrRCAPo6KN2r0BW86MRancoyJkoA==",
-      "path": "microsoft.extensions.primitives/10.0.13",
-      "hashPath": "microsoft.extensions.primitives.10.0.13.nupkg.sha512"
+      "sha512": "sha512-NjzLiZ1/bYx8VwLqHxNnCfDTQQbCY7P1dwT7JM5FiANiaSfI6UKHi0/sla+jyRbOIbPAMJkhWQ/9pH3tMf+IrQ==",
+      "path": "microsoft.extensions.primitives/10.0.15",
+      "hashPath": "microsoft.extensions.primitives.10.0.15.nupkg.sha512"
     },
     "Microsoft.IdentityModel.Abstractions/8.14.0": {
       "type": "package",

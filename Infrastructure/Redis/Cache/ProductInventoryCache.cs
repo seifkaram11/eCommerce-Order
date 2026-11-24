@@ -8,17 +8,19 @@ public class ProductInventoryCache:IProductInventoryCache
 {
     IDatabase _db;
     readonly string prefix="product#";
-    string ProductKey(string id)=>prefix+id+":quantity";
+    string ProductKey(string id)=>prefix+id;
 
     public ProductInventoryCache(Client db)
     {
         _db = db.GetDatabase();
     }
 
-    public async Task<bool> checkAvailability(Guid id, int Qua)
+    public async Task<bool> checkAvailability(Guid ProductId, Guid ProductVariantId, int Qua)
     {
-        string key=ProductKey(id.ToString());
+        string key=ProductKey(ProductId+"#"+ProductVariantId);
 
-        return (int)await _db.StringGetAsync(key) > Qua;
+        int check=(int)await _db.StringGetAsync(key);
+
+        return  check>= Qua;
     }
 }
